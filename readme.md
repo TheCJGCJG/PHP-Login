@@ -12,9 +12,9 @@ Usage
 
 ```php
 //Initialize the class 
-require_once('login.php');
-$login = new login()
-$cglogin->init("127.0.0.1", "web_login", "TotallySecurePassword", "webSite_Storage", "storage_");
+require_once 'login.php';
+$login = new login("127.0.0.1", "web_login", "TotallySecurePassword", "webSite_Storage", "3306", "storage_")
+
 //Create user Hello with the password of World
 $login->createAccount('Hello', 'World');
 
@@ -32,11 +32,10 @@ Functions
 - Initialize
 
 ```php
-$login->init(string $hostname, string $username, string $password, string $prefix);
-
-/*
-* Returns true on success, returns false on error
+/**
+* Initialisation is done when instantiating the class like so
 */
+$login = new login("127.0.0.1", "web_login", "TotallySecurePassword", "webSite_Storage", "3306", "storage_")
 ```
 
 - Create A User Account
