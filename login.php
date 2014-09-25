@@ -161,7 +161,7 @@ class login
             return false;
         }
         $username = $this->Connection()->real_escape_string($username);
-        $newPassword = $this->hashPassword($password);
+        $newPassword = $this->Connection()->real_escape_string($this->hashPassword($password));
         $query = "UPDATE " . $this->_info['Prefix'] . "accounts SET password='$newPassword' WHERE username='$username';";
         echo $query;
         if ($result = $this->sqlQuery($query)) {
