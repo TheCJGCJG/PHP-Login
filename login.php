@@ -88,7 +88,7 @@ class login
             return FALSE;
         }
 
-        $result = $this->sqlQuery("INSERT INTO " . $this->_info['Prefix'] . "accounts (username, password) VALUES ('$username', '$password')");
+        $result = $this->sqlQuery("INSERT INTO " . $this->_info['Prefix'] . "accounts (username, password) VALUES (' " . $username . "', '" . $password . "')");
 
         if ($result)
         {
@@ -105,7 +105,7 @@ class login
         if ($createAccount == TRUE)
         {
         $username = $this->Connection()->real_escape_string($username);
-        $query = "SELECT * FROM " . $this->_info['Prefix'] . "accounts WHERE username= '$username';";
+        $query = "SELECT * FROM " . $this->_info['Prefix'] . "accounts WHERE username= '" . $username . "';";
         $result = $this->sqlQuery($query);
         $userinfo = array();
         if ($result->num_rows == 0) {
@@ -148,7 +148,7 @@ class login
             return false;
         }
         $username = $this->Connection()->real_escape_string($username);
-        $query = "DELETE FROM " . $this->_info['Prefix'] . "accounts WHERE username='$username';";
+        $query = "DELETE FROM " . $this->_info['Prefix'] . "accounts WHERE username='" . $username . "';";
         if ($result = $this->sqlQuery($query)) {
             return true;
         } else {
@@ -162,7 +162,7 @@ class login
         }
         $username = $this->Connection()->real_escape_string($username);
         $newPassword = $this->Connection()->real_escape_string($this->hashPassword($password));
-        $query = "UPDATE " . $this->_info['Prefix'] . "accounts SET password='$newPassword' WHERE username='$username';";
+        $query = "UPDATE " . $this->_info['Prefix'] . "accounts SET password='$newPassword' WHERE username='" . $username . "';";
         echo $query;
         if ($result = $this->sqlQuery($query)) {
             return true;
